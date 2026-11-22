@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="az"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>FORMA STONE</title>
+<meta name="theme-color" content="#111111">
+<script>
+(function(){try{
+const c=document.createElement('canvas');c.width=c.height=512;const x=c.getContext('2d');
+x.fillStyle='#111';x.fillRect(0,0,512,512);x.strokeStyle='#c9a45c';x.lineWidth=8;x.strokeRect(62,62,388,388);
+x.fillStyle='#c9a45c';x.font='bold 170px Arial';x.textAlign='center';x.textBaseline='middle';x.fillText('FS',256,270);
+const url=c.toDataURL('image/png');
+document.head.insertAdjacentHTML('beforeend','<link rel="icon" href="'+url+'"><link rel="apple-touch-icon" href="'+url+'">');
+const m={name:'FORMA STONE',short_name:'FORMA STONE',display:'standalone',background_color:'#111111',theme_color:'#111111',lang:'az',start_url:location.href.split('#')[0],icons:[{src:url,sizes:'512x512',type:'image/png',purpose:'any'}]};
+const l=document.createElement('link');l.rel='manifest';l.href=URL.createObjectURL(new Blob([JSON.stringify(m)],{type:'application/manifest+json'}));document.head.appendChild(l);
+}catch(e){}})();
+</script>
+<style>
+:root{color-scheme:dark;--bg:#111;--card:#1d1d1d;--line:#39342b;--tx:#eee;--mu:#a0a0a0;--gold:#c9a45c;--inp:#0c0c0c;--bad:#ff6b6b;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:Arial,sans-serif;font-size:16px}
+header{text-align:center;padding:16px 10px 8px}
+.logo{font-size:24px;letter-spacing:5px;font-weight:bold}.logo span{color:var(--gold)}
+.dots{display:flex;gap:6px;justify-content:center;margin-top:10px}
+.dot{width:34px;height:5px;border-radius:3px;background:var(--line)}.dot.on{background:var(--gold)}
+main{max-width:700px;margin:auto;padding:10px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:12px}
+h2{font-size:19px;color:var(--gold);margin:0 0 4px}
+.hint{color:var(--mu);font-size:14px;line-height:1.5;margin:0 0 12px}
+label{display:block;font-weight:bold;margin:14px 0 6px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.f{position:relative}
+input[type=text]{width:100%;padding:16px 46px 16px 14px;font-size:22px;background:var(--inp);border:2px solid #49443b;border-radius:10px;color:#fff}
+input[type=text]:focus{outline:0;border-color:var(--gold)}
+.u{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--mu);font-size:15px}
+input[type=range]{width:100%;accent-color:var(--gold)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:11px 14px;background:#2a2a2a;border:2px solid transparent;border-radius:10px;color:#fff;font-size:15px;cursor:pointer}
+.chip.on{border-color:var(--gold);background:#3a3224;color:var(--gold)}
+button{font-family:inherit}
+.big{width:100%;padding:17px;border:0;border-radius:12px;font-size:17px;font-weight:bold;cursor:pointer;margin-top:12px;background:var(--gold);color:#17130c}
+.big.sec{background:#34312b;color:#fff}
+.err{color:var(--bad);font-size:15px;margin-top:10px;min-height:20px}
+svg.sk{width:100%;height:auto;display:block;margin-top:6px}
+details{margin-top:14px;border-top:1px solid var(--line);padding-top:10px}
+summary{cursor:pointer;color:var(--gold);font-weight:bold;padding:6px 0}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sc{background:var(--inp);border:1px solid var(--line);border-radius:12px;padding:13px;text-align:center}
+.sc b{display:block;font-size:26px;color:var(--gold)}.sc span{font-size:13px;color:var(--mu)}
+.opt{border:2px solid #484137;border-radius:12px;padding:12px;margin:10px 0;cursor:pointer}
+.opt.on{border-color:var(--gold);background:#29251d}
+.opt p{margin:2px 0 6px;font-size:14px;color:var(--mu)}
+.opt svg,#draw{width:100%;display:block;background:#f4f0e8;border-radius:8px}
+#cut{font-size:16px;line-height:2}
+canvas{width:100%;display:block;border-radius:10px;touch-action:none;background:#000}
+#fileRow input{width:100%;color:#fff}
+@media print{body{background:#fff;color:#000}.no-print,header,.dots{display:none!important}#s4{display:block!important}.card{background:#fff;border:0}}
+</style></head><body>
+<header><div class="logo">FORMA <span>STONE</span></div>
+<div class="dots no-print"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></header>
+<main>
+
+<section id="s1" class="no-print">
+<div class="card">
+<h2>1. Otağın ölçüsü</h2>
+<p class="hint">Otağın döşəməsini metrlə ölç və yaz. Vergüllə və ya nöqtə ilə yaza bilərsən (məs. 2,90).</p>
+<svg id="sk" class="sk" viewBox="0 0 300 180"></svg>
+<label>Uzunluq</label><div class="f"><input id="roomL" type="text" inputmode="decimal" placeholder="məs. 3,00"><span class="u">metr</span></div>
+<label>En</label><div class="f"><input id="roomW" type="text" inputmode="decimal" placeholder="məs. 2,90"><span class="u">metr</span></div>
+<div class="err" id="e1"></div>
+<button class="big" onclick="next1()">Növbəti →</button>
+</div></section>
+
+<section id="s2" class="no-print" hidden>
+<div class="card">
+<h2>2. Kafelin ölçüsü</h2>
+<p class="hint">Hazır ölçülərdən birinə toxun və ya aşağıda özün yaz. Ölçü santimetrlə (sm).</p>
+<div class="chips" id="presets"></div>
+<div class="row"><div><label>Uzunluq</label><div class="f"><input id="tileL" type="text" inputmode="decimal" placeholder="60"><span class="u">sm</span></div></div>
+<div><label>En</label><div class="f"><input id="tileW" type="text" inputmode="decimal" placeholder="30"><span class="u">sm</span></div></div></div>
+<label>Kafellər arası xətt (fuqa)</label><div class="chips" id="fuga"></div>
+<label>Ehtiyat (sınma, kəsim itkisi)</label><div class="chips" id="waste"></div>
+<details><summary>+ Qiymət və qutu (istəyə bağlı)</summary>
+<label>Bir qutuda neçə kafel var?</label><div class="f"><input id="perBox" type="text" inputmode="decimal" placeholder="məs. 8"><span class="u">ədəd</span></div>
+<label>Kafelin 1 m² qiyməti</label><div class="f"><input id="priceM" type="text" inputmode="decimal" placeholder="məs. 25"><span class="u">pul</span></div>
+<label>İş haqqı (1 m² üçün)</label><div class="f"><input id="laborM" type="text" inputmode="decimal" placeholder="məs. 10"><span class="u">pul</span></div>
+</details>
+<div class="err" id="e2"></div>
+<button class="big" onclick="calc()">HESABLA</button>
+<button class="big sec" onclick="show('s1')">← Geri</button>
+</div></section>
+
+<section id="s3" class="no-print" hidden>
+<div class="card"><h2>Lazım olan material</h2><p class="hint" id="sumInfo"></p><div class="cards" id="sum"></div></div>
+<div class="card"><h2>Düzülüş variantları</h2><p class="hint">Ən az kəsim olan birinci gəlir. Bəyəndiyinə toxun.</p><div id="opts"></div>
+<button class="big" onclick="openPlan()">PLANI GÖSTƏR</button>
+<button class="big sec" onclick="show('s2')">← Geri</button></div>
+</section>
+
+<section id="s4" hidden>
+<div class="card"><h2 id="pt">Plan</h2><p class="hint" id="pi"></p>
+<svg id="draw" viewBox="0 0 1000 700"></svg>
+<h2 style="margin-top:16px">Kəsiləcək hissələr</h2><div id="cut"></div>
+<div class="no-print">
+<button class="big" onclick="window.print()">ÇAP ET / PDF</button>
+<button class="big sec" onclick="openPhoto()">FOTODA GÖSTƏR</button>
+<button class="big sec" onclick="show('s3')">← Geri</button></div></div>
+</section>
+
+<section id="s5" class="no-print" hidden>
+<div class="card"><h2>Otağın fotosunda</h2>
+<p class="hint">1) Otağın döşəməsini çək və ya seç. 2) Qızılı 4 nöqtəni barmaqla döşəmənin 4 küncünə apar.</p>
+<div id="fileRow"><input id="photoFile" type="file" accept="image/*"></div>
+<canvas id="cv" style="margin-top:10px"></canvas>
+<label>Xətlərin görünməsi</label><input id="op" type="range" min="20" max="100" value="80">
+<p class="hint">Saxlamaq üçün telefonun ekran şəklini (screenshot) çək.</p>
+<button class="big sec" onclick="show('s4')">← Geri</button></div>
+</section>
+
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const num=id=>parseFloat(String($(id).value).replace(',','.'))||0;
+let R={},designs=[],chosen=0,F=2,waste=10,img=null,pts=[],drag=-1;
+const IDS=['roomL','roomW','tileL','tileW','perBox','priceM','laborM'];
+function show(id){document.querySelectorAll('section').forEach(s=>s.hidden=s.id!==id);
+ const n={s1:0,s2:1,s3:2,s4:2,s5:2}[id];
+ document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('on',i<=n));scrollTo(0,0)}
+function err(id,t){$(id).textContent=t;return false}
+
+// Otaq eskizi
+function sketch(){const l=num('roomL'),w=num('roomW'),L=l||3,W=w||2.5,s=Math.min(200/L,100/W),a=L*s,b=W*s,x=150-a/2,y=90-b/2;
+$('sk').innerHTML=`<rect x="${x}" y="${y}" width="${a}" height="${b}" fill="#2a261e" stroke="#c9a45c" stroke-width="2"/><text x="150" y="${y-8}" text-anchor="middle" fill="#c9a45c" font-size="13">↔ UZUNLUQ ${l?l+' m':''}</text><text transform="rotate(-90)" x="-90" y="${x-8}" text-anchor="middle" fill="#c9a45c" font-size="13">↔ EN ${w?w+' m':''}</text>`}
+['roomL','roomW'].forEach(i=>$(i).addEventListener('input',sketch));sketch();
+function next1(){const l=num('roomL'),w=num('roomW');
+ if(!l||!w)return err('e1','İki ölçünü də yaz (məs. 3,00 və 2,90).');
+ if(l>100||w>100)return err('e1','Ölçü çox böyükdür. Metrlə yazdığına əmin ol.');
+ err('e1','');show('s2')}
+
+// Çiplər
+function chips(id,items,label,get,set){const box=$(id);box.innerHTML='';
+ items.forEach(v=>{const b=document.createElement('button');b.className='chip';b.textContent=label(v);
+  b.onclick=()=>{set(v);paint()};b.dataset.v=JSON.stringify(v);box.appendChild(b)});
+ function paint(){[...box.children].forEach(b=>b.classList.toggle('on',get(JSON.parse(b.dataset.v))))}
+ paint();box._p=paint}
+chips('presets',[[30,60],[60,60],[20,20],[30,30],[40,40],[45,45],[60,120],[80,80]],v=>v[0]+'×'+v[1],
+ v=>num('tileL')===v[0]&&num('tileW')===v[1],v=>{$('tileL').value=v[0];$('tileW').value=v[1]});
+chips('fuga',[0,2,3,5],v=>v?v+' mm':'Yoxdur',v=>F===v,v=>F=v);
+chips('waste',[5,10,15],v=>v+'%',v=>waste===v,v=>waste=v);
+['tileL','tileW'].forEach(i=>$(i).addEventListener('input',()=>$('presets')._p()));
+
+// Düzülüş
+function axis(len,t,center){const n=Math.ceil(len/t),off=center?(n*t-len)/2:0,o=[];
+ for(let i=0;i<n;i++){const a=Math.max(0,i*t-off),b=Math.min(len,(i+1)*t-off);if(b>a+1e-4)o.push({a,b,size:b-a})}return o}
+function makeDesign(name,rot,center,brick,st){
+ const tw=(rot?R.tW:R.tL)+R.j,th=(rot?R.tL:R.tW)+R.j,ys=axis(R.W,th,center),ps=[];
+ ys.forEach((row,r)=>{const sh=brick?(r%2)*(tw/2):0,or=st==='center'?-tw/2:0;
+  for(let i=-2;i<Math.ceil(R.L/tw)+3;i++){let a=i*tw+sh+or;if(st==='right')a=R.L-(i*tw+sh+tw);
+   const x1=Math.max(0,a),x2=Math.min(R.L,a+tw);if(x2<=x1+1e-4)continue;
+   ps.push({x:x1,y:row.a,w:x2-x1,h:row.size,cut:x2-x1<tw-.001||row.size<th-.001})}});
+ return{name,tw,th,ps,cuts:ps.filter(p=>p.cut).length}}
+
+function calc(){const tl=num('tileL'),tw=num('tileW');
+ if(!tl||!tw)return err('e2','Kafelin ölçüsünü seç və ya yaz (məs. 60 və 30).');
+ if(tl>300||tw>300)return err('e2','Kafel ölçüsü santimetrlə olmalıdır.');
+ err('e2','');
+ R={L:num('roomL'),W:num('roomW'),tL:tl/100,tW:tw/100,j:F/1000};
+ designs=[makeDesign('Düz, kənardan başla',0,0,0),makeDesign('Düz, mərkəzdən',0,1,0),
+  makeDesign('Kərpic, soldan',0,0,1,'left'),makeDesign('Kərpic, sağdan',0,0,1,'right'),makeDesign('Kərpic, mərkəzdən',0,0,1,'center'),
+  makeDesign('90° çevrilmiş, kənardan',1,0,0),makeDesign('90° çevrilmiş, mərkəzdən',1,1,0)].sort((a,b)=>a.cuts-b.cuts);
+ chosen=0;
+ const area=R.L*R.W,per=(R.tL+R.j)*(R.tW+R.j),n=Math.ceil(area/per*(1+waste/100)),pb=num('perBox'),pm=num('priceM'),lm=num('laborM');
+ const boxes=pb?Math.ceil(n/pb):0,c=[[area.toFixed(2)+' m²','Otağın sahəsi'],[n+' ədəd','Kafel (+'+waste+'% ehtiyat)']];
+ if(boxes)c.push([boxes+' qutu','Qutu sayı']);
+ let tot=0;if(pm){tot+=(boxes?boxes*pb:n)*R.tL*R.tW*pm}
+ if(lm)tot+=area*lm;if(tot)c.push([Math.round(tot).toLocaleString('az'),'Cəmi məbləğ']);
+ $('sum').innerHTML=c.map(x=>`<div class="sc"><b>${x[0]}</b><span>${x[1]}</span></div>`).join('');
+ $('sumInfo').textContent=`Otaq ${R.L}×${R.W} m · Kafel ${tl}×${tw} sm · Fuqa ${F} mm`;
+ try{IDS.forEach(i=>localStorage.setItem('fs_'+i,$(i).value))}catch(e){}
+ opts();show('s3')}
+
+function opts(){const box=$('opts');box.innerHTML='';
+ designs.forEach((d,i)=>{const o=document.createElement('div');o.className='opt'+(i===chosen?' on':'');
+  o.innerHTML=`<b>${i+1}. ${d.name}</b><p>${d.cuts} kəsim${i===0?' · ən az kəsim ✔':''}</p><svg viewBox="0 0 400 140" id="m${i}"></svg>`;
+  o.onclick=()=>{chosen=i;opts()};box.appendChild(o);render($('m'+i),d,400,140,0)})}
+
+function render(svg,d,vw,vh,big){svg.innerHTML='';const ns='http://www.w3.org/2000/svg';
+ const pad=big?70:12,s=Math.min((vw-2*pad)/R.L,(vh-2*pad)/R.W),rw=R.L*s,rh=R.W*s,ox=(vw-rw)/2,oy=(vh-rh)/2;
+ const add=(t,a,x)=>{const n=document.createElementNS(ns,t);for(const k in a)n.setAttribute(k,a[k]);if(x!==undefined)n.textContent=x;svg.appendChild(n)};
+ add('rect',{x:ox,y:oy,width:rw,height:rh,fill:'#fff',stroke:'#222','stroke-width':big?4:2});
+ d.ps.forEach(p=>{const x=ox+p.x*s,y=oy+p.y*s,w=p.w*s,h=p.h*s;
+  add('rect',{x,y,width:w,height:h,fill:p.cut?'#ffe2dc':'#ded8cc',stroke:p.cut?'#df3333':'#777','stroke-width':big?(p.cut?2.5:1):.8});
+  if(big&&p.cut&&w>50&&h>26)add('text',{x:x+w/2,y:y+h/2+4,'text-anchor':'middle','font-size':Math.min(14,w/5,h/2),fill:'#bd2525'},(p.w*100).toFixed(0)+'×'+(p.h*100).toFixed(0))});
+ if(big){add('text',{x:ox+rw/2,y:oy-20,'text-anchor':'middle','font-size':22,fill:'#222'},R.L+' m');
+  add('text',{x:ox-22,y:oy+rh/2,'text-anchor':'middle','font-size':22,fill:'#222',transform:`rotate(-90 ${ox-22} ${oy+rh/2})`},R.W+' m')}}
+
+function openPlan(){const d=designs[chosen];$('pt').textContent=d.name;
+ $('pi').textContent=`Otaq ${R.L}×${R.W} m · Kafel ${(R.tL*100).toFixed(1)}×${(R.tW*100).toFixed(1)} sm`;
+ render($('draw'),d,1000,700,1);
+ const g={};d.ps.filter(p=>p.cut).forEach(p=>{const k=(p.w*100).toFixed(1)+' × '+(p.h*100).toFixed(1)+' sm';g[k]=(g[k]||0)+1});
+ const k=Object.keys(g);$('cut').innerHTML=k.length?k.map(x=>`<b>${g[x]} ədəd</b> — ${x}`).join('<br>'):'Kəsim yoxdur.';show('s4')}
+
+// Foto
+$('photoFile').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;
+ const i=new Image();i.onload=()=>{img=i;setup()};i.src=URL.createObjectURL(f)});
+function openPhoto(){show('s5');if(img)setup()}
+function setup(){const c=$('cv'),r=Math.min(1,1000/img.width);c.width=Math.round(img.width*r);c.height=Math.round(img.height*r);
+ pts=[[.15,.55],[.85,.55],[.95,.95],[.05,.95]].map(a=>({x:c.width*a[0],y:c.height*a[1]}));paint()}
+function Q(u,v){const p=pts;return{x:(1-u)*(1-v)*p[0].x+u*(1-v)*p[1].x+u*v*p[2].x+(1-u)*v*p[3].x,y:(1-u)*(1-v)*p[0].y+u*(1-v)*p[1].y+u*v*p[2].y+(1-u)*v*p[3].y}}
+function paint(){if(!img)return;const c=$('cv'),x=c.getContext('2d'),d=designs[chosen];
+ x.clearRect(0,0,c.width,c.height);x.drawImage(img,0,0,c.width,c.height);
+ const cols=Math.min(40,Math.max(1,Math.round(R.L/d.tw))),rows=Math.min(40,Math.max(1,Math.round(R.W/d.th)));
+ x.save();x.beginPath();pts.forEach((p,i)=>i?x.lineTo(p.x,p.y):x.moveTo(p.x,p.y));x.closePath();x.clip();
+ x.globalAlpha=+$('op').value/100;x.strokeStyle='#fff';x.lineWidth=Math.max(1.5,c.width/500);
+ const line=(f)=>{x.beginPath();for(let j=0;j<=20;j++){const q=f(j/20);j?x.lineTo(q.x,q.y):x.moveTo(q.x,q.y)}x.stroke()};
+ for(let i=0;i<=cols;i++)line(t=>Q(i/cols,t));for(let j=0;j<=rows;j++)line(t=>Q(t,j/rows));
+ x.restore();x.fillStyle='#c9a45c';x.strokeStyle='#000';x.lineWidth=2;
+ pts.forEach(p=>{x.beginPath();x.arc(p.x,p.y,Math.max(11,c.width/40),0,7);x.fill();x.stroke()})}
+$('op').addEventListener('input',paint);
+function pos(e){const c=$('cv'),r=c.getBoundingClientRect();return{x:(e.clientX-r.left)*c.width/r.width,y:(e.clientY-r.top)*c.height/r.height}}
+$('cv').addEventListener('pointerdown',e=>{const p=pos(e);let best=60*$('cv').width/700,k=-1;
+ pts.forEach((q,i)=>{const d=Math.hypot(q.x-p.x,q.y-p.y);if(d<best){best=d;k=i}});
+ if(k>=0){drag=k;$('cv').setPointerCapture(e.pointerId)}});
+$('cv').addEventListener('pointermove',e=>{if(drag<0)return;pts[drag]=pos(e);paint()});
+['pointerup','pointercancel'].forEach(t=>$('cv').addEventListener(t,()=>drag=-1));
+
+try{IDS.forEach(i=>{const v=localStorage.getItem('fs_'+i);if(v)$(i).value=v});sketch();$('presets')._p()}catch(e){}
+show('s1');
+</script></body></html>
