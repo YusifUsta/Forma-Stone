@@ -2,7 +2,20 @@
 <html lang="az"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>FORMA STONE</title>
-<meta name="theme-color" content="#111111">
+<meta name="theme-color" content="#111111"><meta property="og:title" content="FORMA STONE">
+<meta property="og:description" content="Kafel düzülüşü və material hesabı">
+<meta property="og:image" content="https://yusifusta.github.io/Forma-Stone/logo.png">
+<meta property="og:type" content="website">
+<script>
+document.addEventListener('DOMContentLoaded',function(){try{
+var u=new URL('logo.png',location.href).href;
+document.querySelectorAll('link[rel=icon],link[rel=apple-touch-icon],link[rel=manifest]').forEach(function(e){e.remove()});
+document.head.insertAdjacentHTML('beforeend','<link rel="icon" href="'+u+'"><link rel="apple-touch-icon" href="'+u+'">');
+var m={name:'FORMA STONE',short_name:'FORMA STONE',display:'standalone',background_color:'#111111',theme_color:'#111111',lang:'az',start_url:location.href.split('#')[0],icons:[{src:u,sizes:'512x512',type:'image/png',purpose:'any'}]};
+var l=document.createElement('link');l.rel='manifest';l.href=URL.createObjectURL(new Blob([JSON.stringify(m)],{type:'application/manifest+json'}));document.head.appendChild(l);
+var h=document.querySelector('.logo');if(h)h.innerHTML='<img src="'+u+'" alt="FORMA STONE" style="width:120px;height:120px;border-radius:16px;display:block;margin:0 auto">';
+}catch(e){}});
+</script>
 <script>
 (function(){try{
 const c=document.createElement('canvas');c.width=c.height=512;const x=c.getContext('2d');
